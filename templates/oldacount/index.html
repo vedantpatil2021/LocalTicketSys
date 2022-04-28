@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h3>Main Page</h3>
+    {% if user.is_authenticated %}
+    <h3>Hello, {{user.first_name}}</h3>
+    <button type="submit"><a href="logout">Log Out</a></button>
+    <button type="submit"><a href="ticket">Bookticket</a></button>
+    <br>
+    <br>
+    <table border="1">
+        <tr>
+            <th>Emailid</th>
+            <th>Ticket-Id</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Adult</th>
+            <th>Child</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Rate</th>
+            <th>view</th>
+        </tr>
+        {% for ticketdata in ticketdata %}
+        <tr>
+            <td>{{ticketdata.email}}</td>
+            <td>{{ticketdata.ticketid}}</td>
+            <td>{{ticketdata.checkbox}}</td>
+            <td>{{ticketdata.date}}</td>
+            <td>{{ticketdata.time}}</td>
+            <td>{{ticketdata.adult}}</td>
+            <td>0</td>
+            <td>{{ticketdata.fromstation}}</td>
+            <td>{{ticketdata.tostation}}</td>
+            <td>{{ticketdata.rate}}</td>
+            <td><a href="{% url 'viewticket' ticketdata.pk %}">View</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <button type="submit"><a href="register">Sign Up</a></button>
+    <button type="submit"><a href="login">Sign In</a></button>
+    {% endif %}
+</body>
+</html>

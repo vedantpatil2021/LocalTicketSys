@@ -1,0 +1,480 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Local TicketSys</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/css/bootstrap-icons.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static '/css/slick.css' %}"/>
+
+    <link href="{% static '/css/tooplate-little-fashion.css' %}" rel="stylesheet">
+
+    <!--
+
+Tooplate 2127 Little Fashion
+
+https://www.tooplate.com/view/2127-little-fashion
+
+-->
+  </head>
+
+  <body>
+    <section class="preloader">
+      <div class="spinner">
+        <span class="sk-inner-circle"></span>
+      </div>
+    </section>
+
+    <main>
+      <section class="sign-in-form section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 mx-auto col-12">
+              <h1 class="hero-title text-center mb-5" style="color: #ff4400">
+                Ticket Details
+              </h1>
+              <div id="google_translate_element"></div>
+
+              <div class="row">
+                <div class="col-lg-8 col-11 mx-auto">
+                  <form role="form" method="post">
+                    {% csrf_token %}
+                    <div class="hidden_data">
+                      <div class="form-floating">
+                        <input
+                          type="email"
+                          name="email"
+                          value="{{user.email}}"
+                          class="form-control"
+                          readonly
+                        />
+
+                        <label for="email">Email</label>
+                      </div>
+
+                      <div class="form-floating">
+                        <input
+                          type="text"
+                          name="first_name"
+                          class="form-control"
+                          value="{{user.first_name}}"
+                          readonly
+                        />
+
+                        <label for="first_name">First Name</label>
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          name="last_name"
+                          value="{{user.last_name}}"
+                          class="form-control"
+                          readonly
+                        />
+
+                        <label for="last_name">Last Name</label>
+                      </div>
+                    </div>
+
+                    <div
+                      class="checkbox"
+                      style="
+                        display: flex;
+                        justify-content: space-around;
+                        margin-top: 0.8rem;
+                        margin-bottom: 0.8rem;
+                      "
+                    >
+                      <label for="checkbox">Journey Type:</label>
+                      <div class="single">
+                        <input
+                          type="radio"
+                          name="checkbox"
+                          class="form-check-input"
+                          id="single"
+                          value="Single"
+                          required
+                        />
+                        <label for="checkbox">Single</label>
+                      </div>
+                      <div class="return">
+                        <input
+                          type="radio"
+                          name="checkbox"
+                          class="form-check-input"
+                          id="retun"
+                          value="Return"
+                          required
+                        />
+                        <label for="checkbox">Return</label>
+                      </div>
+                    </div>
+
+                    <div class="form-floating my-2">
+                      <select class="form-control" name="adult" id="adult">
+                        <option disabled selected value>
+                          --Select No of Tickets--
+                        </option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                      </select>
+
+                      <label for="adult">Number of Ticket:</label>
+                    </div>
+
+                    <div class="form-floating">
+                      <select
+                        class="form-control"
+                        placeholder="From:"
+                        id="from"
+                        name="from"
+                        required
+                      >
+                        <option disabled selected value>
+                          --Select From Station--
+                        </option>
+                        <option value="0" id="chatrapati">
+                          Chatrapati Shivaji Terminus
+                        </option>
+                        <option value="2" id="masjid">Masjid Bunder</option>
+                        <option value="3" id="sandhurst">Sandhurst Road</option>
+                        <option value="5" id="byculla">Byculla</option>
+                        <option value="6" id="chinchpokli">Chinchpokli</option>
+                        <option value="7" id="currey">Currey Road</option>
+                        <option value="8" id="parel">Parel</option>
+                        <option value="9" id="dadar">Dadar</option>
+                        <option value="11" id="matunga">Matunga</option>
+                        <option value="13" id="sion">Sion</option>
+                        <option value="16" id="kurla">Kurla</option>
+                        <option value="18" id="vidyavihar">Vidyavihar</option>
+                        <option value="20" id="ghatkopar">Ghatkopar</option>
+                        <option value="23" id="vikhroli">Vikhroli</option>
+                        <option value="25" id="kanjurmarg">Kanjurmarg</option>
+                        <option value="26" id="bhandup">Bhandup</option>
+                        <option value="28" id="nahur">Nahur</option>
+                        <option value="31" id="mulund">Mulund</option>
+                        <option value="34" id="thane">Thane</option>
+                        <option value="36" id="kalwa">Kalwa</option>
+                        <option value="40" id="mumbra">Mumbra</option>
+                        <option value="43" id="diwa">Diwa</option>
+                        <option value="47" id="kopar">Kopar</option>
+                        <option value="49" id="dombivli">Dombivli</option>
+                        <option value="50" id="thakurli">Thakurli</option>
+                        <option value="54" id="kalyan">Kalyan</option>
+                        <option value="55" id="vithalwadi">Vithalwadi</option>
+                        <option value="56" id="ulhasnagar">Ulhasnagar</option>
+                        <option value="58" id="Ambernath">Ambernath</option>
+                        <option value="60" id="badlapur">Badlapur</option>
+                        <option value="62" id="Vangani">Vangani</option>
+                        <option value="66" id="neral">Neral</option>
+                        <option value="68" id="bhivpuri">Bhivpuri Rd</option>
+                        <option value="70" id="karjat">Karjat</option>
+                        <option value="71" id="kelavalli">Kelavall</option>
+                        <option value="73" id="dolavalli">Dolavalli</option>
+                        <option value="74" id="lowjee">Lowjee</option>
+                        <option value="75" id="khopoli">Khopoli</option>
+                        <option value="57" id="sahad">Sahad</option>
+                        <option value="59" id="ambivalli">Ambivalli</option>
+                        <option value="72" id="titwala">Titwala</option>
+                        <option value="76" id="khandavli">Khandavli</option>
+                        <option value="77" id="vasind">Vasind</option>
+                        <option value="78" id="asangoan">Asangoan</option>
+                        <option value="79" id="atgoan">Atgoan</option>
+                        <option value="81" id="kardi">Kardi</option>
+                        <option value="83" id="kasara">Kasara</option>
+                      </select>
+
+                      <label>From:</label>
+                    </div>
+
+                    <div class="form-floating">
+                      <select
+                        class="form-control"
+                        id="to"
+                        name="to"
+                        placeholder="To:"
+                        required
+                      >
+                        <option disabled selected value>
+                          --Select TO Station--
+                        </option>
+                        <option value="0" id="chatrapati">
+                          Chatrapati Shivaji Terminus
+                        </option>
+                        <option value="2" id="masjid">Masjid Bunder</option>
+                        <option value="3" id="sandhurst">Sandhurst Road</option>
+                        <option value="5" id="byculla">Byculla</option>
+                        <option value="6" id="chinchpokli">Chinchpokli</option>
+                        <option value="7" id="currey">Currey Road</option>
+                        <option value="8" id="parel">Parel</option>
+                        <option value="9" id="dadar">Dadar</option>
+                        <option value="11" id="matunga">Matunga</option>
+                        <option value="13" id="sion">Sion</option>
+                        <option value="16" id="kurla">Kurla</option>
+                        <option value="18" id="vidyavihar">Vidyavihar</option>
+                        <option value="20" id="ghatkopar">Ghatkopar</option>
+                        <option value="23" id="vikhroli">Vikhroli</option>
+                        <option value="25" id="kanjurmarg">Kanjurmarg</option>
+                        <option value="26" id="bhandup">Bhandup</option>
+                        <option value="28" id="nahur">Nahur</option>
+                        <option value="31" id="mulund">Mulund</option>
+                        <option value="34" id="thane">Thane</option>
+                        <option value="36" id="kalwa">Kalwa</option>
+                        <option value="40" id="mumbra">Mumbra</option>
+                        <option value="43" id="diwa">Diwa</option>
+                        <option value="47" id="kopar">Kopar</option>
+                        <option value="49" id="dombivli">Dombivli</option>
+                        <option value="50" id="thakurli">Thakurli</option>
+                        <option value="54" id="kalyan">Kalyan</option>
+                        <option value="55" id="vithalwadi">Vithalwadi</option>
+                        <option value="56" id="ulhasnagar">Ulhasnagar</option>
+                        <option value="58" id="Ambernath">Ambernath</option>
+                        <option value="60" id="badlapur">Badlapur</option>
+                        <option value="62" id="Vangani">Vangani</option>
+                        <option value="66" id="neral">Neral</option>
+                        <option value="68" id="bhivpuri">Bhivpuri Rd</option>
+                        <option value="70" id="karjat">Karjat</option>
+                        <option value="71" id="kelavalli">Kelavall</option>
+                        <option value="73" id="dolavalli">Dolavalli</option>
+                        <option value="74" id="lowjee">Lowjee</option>
+                        <option value="75" id="khopoli">Khopoli</option>
+                        <option value="57" id="sahad">Sahad</option>
+                        <option value="59" id="ambivalli">Ambivalli</option>
+                        <option value="72" id="titwala">Titwala</option>
+                        <option value="76" id="khandavli">Khandavli</option>
+                        <option value="77" id="vasind">Vasind</option>
+                        <option value="78" id="asangoan">Asangoan</option>
+                        <option value="79" id="atgoan">Atgoan</option>
+                        <option value="81" id="kardi">Kardi</option>
+                        <option value="83" id="kasara">Kasara</option>
+                      </select>
+
+                      <label for="to">TO:</label>
+                    </div>
+
+                    <div class="form-floating my-2">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="rate"
+                        placeholder="Rate"
+                        value=""
+                        id="result"
+                        required
+                        readonly
+                      />
+
+                      <label for="rate">Rate</label>
+                    </div>
+
+                    <div class="form-floating my-2">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="date"
+                        id="date"
+                        value=""
+                        placeholder="Date"
+                        required
+                        readonly
+                      />
+
+                      <label for="date">Date</label>
+                    </div>
+
+                    <div class="form-floating my-2">
+                      <textarea
+                        class="form-control"
+                        required
+                        id="usermessage"
+                        name="usermessage"
+                        rows="4"
+                        cols="50"
+                        value=""
+                        placeholder="Ticket Applicable"
+                        readonly
+                      ></textarea>
+
+                      <label for="usermessage">Ticket Applicable: </label>
+                    </div>
+
+                    <div class="container">
+                      <div class="row subbtn">
+                        <button
+                          type="button"
+                          onclick="fare();"
+                          class="btn custom-btn form-control col-sm"
+                          ="margin-top: 1px;"
+                        >
+                          Confirm
+                        </button>
+                        <button
+                          type="submit"
+                          class="btn custom-btn form-control col-sm"
+                          style="margin-top: 1px"
+                        >
+                          Book Ticket
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static '/js/Headroom.js' %}"></script>
+    <script src="{% static '/js/jQuery.headroom.js' %}"></script>
+    <script src="{% static '/js/slick.min.js' %}"></script>
+    <script src="{% static '/js/custom.js' %}"></script>
+
+    <script>
+      n = new Date();
+      y = n.getFullYear();
+      m = n.getMonth() + 1;
+      d = n.getDate();
+      document.getElementById("date").value = d + "/" + m + "/" + y;
+
+      // let ticketid = Math.floor(Math.random() * 100000000 + 1);
+      // document.getElementById("ticketid").value = ticketid;
+    </script>
+
+    <script>
+      function fare() {
+        n = new Date();
+        y = n.getFullYear();
+        m = n.getMonth() + 1;
+        d = n.getDate() + 1;
+
+        var from = document.getElementById("from").value;
+        var to = document.getElementById("to").value;
+        var result = document.getElementById("result").value;
+        var single = document.getElementById("single").value;
+        var retun = document.getElementById("retun").value;
+        var adult = document.getElementById("adult").value;
+
+        if (document.getElementById("single").checked == true) {
+          if (from - to == 0) {
+            alert("Same Stations Not Allowed");
+          }
+          if (from - to >= 1 && from - to <= 8) {
+            document.getElementById("result").value = adult * "5";
+          }
+
+          if (from - to >= 9 && from - to <= 29) {
+            document.getElementById("result").value = adult * "10";
+          }
+
+          if (from - to >= 30 && from - to <= 42) {
+            document.getElementById("result").value = adult * "15";
+          }
+          if (from - to >= 43 && from - to <= 55) {
+            document.getElementById("result").value = adult * "20";
+          }
+
+          if (from - to <= -1 && from - to >= -8) {
+            document.getElementById("result").value = adult * "5";
+          }
+
+          if (from - to <= -9 && from - to >= -29) {
+            document.getElementById("result").value = adult * "10";
+          }
+
+          if (from - to <= -30 && from - to >= -42) {
+            document.getElementById("result").value = adult * "15";
+          }
+          if (from - to <= -43 && from - to >= -55) {
+            document.getElementById("result").value = adult * "20";
+          }
+
+          document.getElementById("usermessage").value =
+            "Journey should commence within one hour";
+        }
+
+        if (document.getElementById("retun").checked == true) {
+          if (from - to == 0) {
+            alert("Same Stations Not Allowed");
+          }
+
+          if (from - to >= 1 && from - to <= 8) {
+            document.getElementById("result").value = adult * "10";
+          }
+
+          if (from - to >= 9 && from - to <= 29) {
+            document.getElementById("result").value = adult * "20";
+          }
+
+          if (from - to >= 30 && from - to <= 42) {
+            document.getElementById("result").value = adult * "30";
+          }
+          if (from - to >= 43 && from - to <= 55) {
+            document.getElementById("result").value = adult * "40";
+          }
+
+          if (from - to <= -1 && from - to >= -8) {
+            document.getElementById("result").value = adult * "10";
+          }
+
+          if (from - to <= -9 && from - to >= -29) {
+            document.getElementById("result").value = adult * "20";
+          }
+
+          if (from - to <= -30 && from - to >= -42) {
+            document.getElementById("result").value = adult * "30";
+          }
+          if (from - to <= -43 && from - to >= -55) {
+            document.getElementById("result").value = adult * "40";
+          }
+
+          document.getElementById("usermessage").value =
+            "Valid for one return journey till midnight of" +
+            " " +
+            d +
+            "/" +
+            m +
+            "/" +
+            y;
+        }
+      }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript"> 
+        function googleTranslateElementInit() { 
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'}, 
+                'google_translate_element'
+            ); 
+        } 
+    </script>
+  </body>
+</html>
