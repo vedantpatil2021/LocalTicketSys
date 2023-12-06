@@ -1,0 +1,245 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Local TicketSys - Dashboard</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/css/bootstrap-icons.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static '/css/slick.css' %}"/>
+
+    <link href="{% static '/css/tooplate-little-fashion.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!-- <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/solid.css"
+      integrity="sha384-Tv5i09RULyHKMwX0E8wJUqSOaXlyu3SQxORObAI08iUwIalMmN5L6AvlPX2LMoSE"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/fontawesome.css"
+      integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7"
+      crossorigin="anonymous"
+    /> -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <!--
+
+Tooplate 2127 Little Fashion
+
+https://www.tooplate.com/view/2127-little-fashion
+
+-->
+  </head>
+
+  <body>
+    <section class="preloader">
+      <div class="spinner">
+        <span class="sk-inner-circle"></span>
+      </div>
+    </section>
+
+    <main>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <a class="navbar-brand" href="index.html">
+            <strong><span>Local</span> TicketSys</strong>
+          </a>
+
+          <div class="d-lg-none">
+            <a
+              href="sign-in.html"
+              class="bi-person custom-icon me-3"
+              style="font-size: 20px"
+              >Login</a
+            >
+          </div>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a class="nav-link active" href="index.html">Home</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="faq.html">FAQs</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="contact.html">Contact</a>
+              </li>
+
+              <li class="nav-item">
+                <div id="google_translate_element"></div>
+              </li>
+              
+            </ul>
+
+            <div class="d-none d-lg-block">
+              <a
+                href="logout"
+                style="font-size: 20px"
+                ><i class="fas fa-sign-out-alt"></i>Logout</a
+              >
+            </div>
+          </div>
+        </div>
+      </nav>
+      <section class="products section-padding">
+        <div class="container">
+          <div class="col-12">
+            {% if user.is_authenticated %}
+            <h2 class="text">Hi!!{{user.first_name}}</h2>
+            {% endif %}
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            style="background-color: #ff4400; border: #ff4400;margin-top: 2rem"
+          >
+          <i class="fas fa-ticket-alt"></i>&nbsp;&nbsp;<a href="ticket" style="text-decoration: none;color: aliceblue;">Book Ticket</a>
+          </button>
+          <div class="col-12">
+            <h2 class="mb-5 tickethis" style="margin-top: 1.5rem;">Ticket History</h2>
+          </div>
+          <div class="row">
+            {% for ticketdata in ticketdata %}
+            <div class="col-md-4 mt-2">
+              <div class="product-thumb">
+                <a href="{% url 'viewticket' ticketdata.pk %}">
+                  <lottie-player src="https://assets5.lottiefiles.com/packages/lf20_fro7puny.json"  background="transparent"  speed="1" class="image-fluid product-image"  loop  autoplay></lottie-player>
+                </a>
+                <div class="product-info d-flex">
+                  <div>
+                    <h5 class="product-title mb-0">
+                      <a href="{% url 'viewticket' ticketdata.pk %}" class="product-title-link"
+                        >{{ticketdata.fromstation}} To {{ticketdata.tostation}}</a
+                      >
+                    </h5>
+
+                    <p class="product-p">{{ticketdata.date}}</p>
+                    <p class="product-p">{{ticketdata.time}}</p>
+                    <p class="product-p">{{ticketdata.rate}}</p>
+                  </div>
+
+                  <!-- <small class="product-price text-muted ms-auto">$25</small> -->
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer my-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-10 me-auto mb-4">
+            <h4 class="text-white mb-3">
+              <a href="index.html">Local</a> TicketSys
+            </h4>
+            <p class="copyright-text text-muted mt-lg-5 mb-4 mb-lg-0">
+              Copyright © 2022 <strong>Local TicketSys</strong>
+            </p>
+            <br />
+          </div>
+
+          <div class="col-lg-5 col-8">
+            <h5 class="text-white mb-3">Sitemap</h5>
+
+            <ul class="footer-menu d-flex flex-wrap">
+              <li class="footer-menu-item">
+                <a href="#" class="footer-menu-link">Privacy policy</a>
+              </li>
+
+              <li class="footer-menu-item">
+                <a href="#" class="footer-menu-link">FAQs</a>
+              </li>
+
+              <li class="footer-menu-item">
+                <a href="#" class="footer-menu-link">Contact</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-lg-3 col-4">
+            <h5 class="text-white mb-3">Social</h5>
+
+            <ul class="social-icon">
+              <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+
+              <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+
+              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+
+              <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static '/js/Headroom.js' %}"></script>
+    <script src="{% static '/js/jQuery.headroom.js' %}"></script>
+    <script src="{% static '/js/slick.min.js' %}"></script>
+    <script src="{% static '/js/custom.js' %}"></script>
+
+    <script
+      defer
+      src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+      integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript"> 
+        function googleTranslateElementInit() { 
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'}, 
+                'google_translate_element'
+            ); 
+        } 
+    </script>
+  </body>
+</html>

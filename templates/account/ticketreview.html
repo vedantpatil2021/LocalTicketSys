@@ -1,0 +1,1009 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Local TicketSys</title>
+
+    <!-- CSS FILES -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static '/css/bootstrap-icons.css' %}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static '/css/slick.css' %}"/>
+
+    <link href="{% static '/css/tooplate-little-fashion.css' %}" rel="stylesheet">
+
+    <!--
+
+Tooplate 2127 Little Fashion
+
+https://www.tooplate.com/view/2127-little-fashion
+
+-->
+  </head>
+
+  <body>
+    <section class="preloader">
+      <div class="spinner">
+        <span class="sk-inner-circle"></span>
+      </div>
+    </section>
+
+    <main>
+      <div id="google_translate_element"></div>
+      <section class="sign-in-form section-padding">
+        <div class="container">
+          <div class="row">
+            <h1 class="hero-title text-center mb-5" style="color: #ff4400">
+              Ticket Preview
+            </h1>
+            <div class="col-sm">
+              <input
+                style="
+                  position: absolute;
+                  font-size: 30px;
+                  left: 27%;
+                  font-weight: 500;
+                  top: 21%;
+                  background: none;
+                  border: none;
+                "
+                id="sampleticketid"
+              />
+              <div
+                class="insidetext"
+                style="
+                  display: flex;
+                  flex-direction: column;
+                  width: 400px;
+                  height: 260px;
+                  position: absolute;
+                  top: 26%;
+                  left: 11%;
+                "
+              >
+                <div
+                  class="firstbox"
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                  "
+                >
+                  <p style="color: #000;font-weight: 600;">{{checkbox}}</p>
+                  <p style="color: #000;font-weight: 600;">{{date}}</p>
+                </div>
+                <div
+                  class="secondbox"
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin-top: 10px;
+                  "
+                >
+                  <p style="color: #000;font-weight: 600;"><input type="text" id="newnewfrom" value="" style="background:none;border: none;width: 150px;font-size: 16px;text-transform: capitalize;color: #000;font-weight: 600;" > TO <input type="text" id="newnewto" value="" style="background:none;border: none;width: 150px;font-size: 16px;text-transform: capitalize;color: #000;font-weight: 600;" ></p>
+                  <p style="color: #000;font-weight: 600;">II ORD</p>
+                </div>
+                <div
+                  class="secondbox"
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin-top: 10px;
+                  "
+                >
+                  <p style="color: #000;font-weight: 600;">AD:{{adult}} &nbsp;&nbsp;&nbsp;CH:0</p>
+                  <p style="color: #000;font-weight: 600;">{{rate}}</p>
+                </div>
+                <div
+                  class="secondbox"
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin-top: 10px;
+                  "
+                >
+                  <!-- <p>Time: <input type="text" name="time" id="time" value="" style="background:none;border: none;width: 150px;"></p> -->
+                </div>
+                <div
+                  class="secondbox"
+                  style="
+                    display: flex;
+                    justify-content: space-between;
+                    width: 100%;
+                    margin-top: 1px;
+                  "
+                >
+                  <p style="color: #000;font-weight: 600;">{{usermessage}}</p>
+                </div>
+              </div>
+              <img
+                src="https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/BeeProAgency/780369_764104/previwticket.png"
+                class="image-fluid"
+                style="
+                  display: block;
+                  height: auto;
+                  border: 0;
+                  width: 500px;
+                  max-width: 100%;
+                "
+                alt="I'm an image"
+              />
+            </div>
+            <div class="col-sm">
+              <div class="col-lg-8 mx-auto col-12">
+                <div class="row">
+                  <div class="col-lg-12 col-11 mx-auto">
+                    <form role="form" method="post" action="ticketconf">
+                      {% csrf_token %}
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          name="email"
+                          value="{{user.email}}"
+                          class="form-control"
+                          placeholder="Emailid"
+                          readonly
+                          required
+                        />
+
+                        <label>Email</label>
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="username"
+                          value="{{user.username}}"
+                          placeholder="Rate"
+                          required
+                          readonly
+                        />
+
+                        <label>Username</label>
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          name="ticketid"
+                          id="ticketid"
+                          value=""
+                          class="form-control"
+                          placeholder="Rate"
+                          required
+                          readonly
+                        />
+
+                        <label>Ticket Id</label>
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="checkbox"
+                          value="{{checkbox}}"
+                          placeholder="Journey Type"
+                          required
+                          readonly
+                        />
+
+                        <label>Journay Type</label>
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          name="adult"
+                          value="{{adult}}"
+                          class="form-control"
+                          placeholder="Adult"
+                          required
+                          readonly
+                        />
+
+                        <label>Adult</label>
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          class="form-control"
+                          name="child"
+                          value="0"
+                          placeholder="Child"
+                          required
+                          readonly
+                        />
+
+                        <label>Child</label>
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          name="from"
+                          id="from"
+                          value="{{from_station}}"
+                          class="form-control"
+                          placeholder="Rate"
+                          required
+                          style="display: none"
+                        />
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          name="fromstation"
+                          id="newfrom"
+                          value=" "
+                          class="form-control"
+                          placeholder="From"
+                          required
+                          readonly
+                        />
+
+                        <label>From</label>
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          id="to"
+                          value="{{to}}"
+                          class="form-control"
+                          placeholder="Rate"
+                          required
+                          readonly
+                          style="display: none"
+                        />
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          id="newto"
+                          name="tostation"
+                          value=""
+                          class="form-control"
+                          placeholder="To"
+                          required
+                          readonly
+                        />
+
+                        <label>To</label>
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          name="rate"
+                          id="rate"
+                          value="{{rate}}"
+                          class="form-control"
+                          placeholder="Rate"
+                          required
+                          readonly
+                        />
+
+                        <label>Rate</label>
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          name="ticketdate"
+                          value="{{date}}"
+                          class="form-control"
+                          placeholder="Date"
+                          required
+                          readonly
+                        />
+
+                        <label>Date</label>
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <input
+                          type="text"
+                          name="time"
+                          id="time"
+                          class="form-control"
+                          placeholder="Time"
+                          value=""
+                          required
+                          readonly
+                        />
+
+                        <label>Time</label>
+                      </div>
+
+                      <div class="payment_stuff" style="display: none;">
+                        <div class="form-floating my-2">
+                          <input
+                            type="text"
+                            name="razorpay_order_id"
+                            id="orderid"
+                            class="form-control"
+                            placeholder="razorpay_order_id"
+                            value=""
+                            required
+                            readonly
+                          />
+  
+                          <label>razorpay_order_id</label>
+                        </div>
+
+                        <div class="form-floating my-2">
+                          <input
+                            type="text"
+                            name="razorpay_payment_id"
+                            id="paymentid"
+                            class="form-control"
+                            placeholder="razorpay_payment_id"
+                            value=""
+                            required
+                            readonly
+                          />
+  
+                          <label>razorpay_payment_id</label>
+                        </div>
+
+                        <div class="form-floating my-2">
+                          <input
+                            type="text"
+                            name="razorpay_signature"
+                            id="paymentsign"
+                            class="form-control"
+                            placeholder="Time"
+                            value=""
+                            required
+                            readonly
+                          />
+  
+                          <label>razorpay_signature</label>
+                        </div>
+                      </div>
+
+                      <div class="form-floating my-2">
+                        <textarea
+                          class="form-control"
+                          required
+                          readonly
+                          name="usermessage"
+                          id="usermessage"
+                          value="{{usermessage}}"
+                          rows="4"
+                          cols="50"
+                          placeholder="Ticket Applicable"
+                        >{{usermessage}}</textarea>
+
+                        <label>Ticket Applicable: </label>
+                      </div>
+
+                      <div class="container">
+                        <div class="row subbtn">
+                          <button
+                            type="submit"
+                            id="submitbtn"
+                            class="btn custom-btn form-control col-sm"
+                            ="margin-top: 1px;"
+                          >
+                            Next
+                          </button>
+                          <button
+                            type="submit"
+                            class="btn custom-btn form-control col-sm"
+                            style="margin-top: 1px"
+                            id="rzp-button1"
+                          >
+                            Pay
+                          </button>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- JAVASCRIPT FILES -->
+    <script src="{% static '/js/jquery.min.js' %}"></script>
+    <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static '/js/Headroom.js' %}"></script>
+    <script src="{% static '/js/jQuery.headroom.js' %}"></script>
+    <script src="{% static '/js/slick.min.js' %}"></script>
+    <script src="{% static '/js/custom.js' %}"></script>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+      document.getElementById('submitbtn').style.display = "none";
+    </script>
+    <script>
+      var options = {
+        key: "rzp_test_fOYmS43NSB2OrR", // Enter the Key ID generated from the Dashboard
+        amount: "{{payment.amount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        currency: "INR",
+        name: "Local TicketSys",
+        description: "Pay for your local train ticket",
+        image: "https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/BeeProAgency/780369_764104/Happy%20journey.png",
+        order_id: "{{payment.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        handler: function (response) {
+          document.getElementById('submitbtn').click()
+          // document.getElementById('submitbtn').style.display="block";
+          document.getElementById('rzp-button1').style.display="none";
+          // alert(response.razorpay_payment_id);
+          // alert(response.razorpay_order_id);
+          // alert(response.razorpay_signature);
+          document.getElementById('paymentid').value=response.razorpay_payment_id;
+          document.getElementById('orderid').value=response.razorpay_order_id;
+          document.getElementById('paymentsign').value=response.razorpay_signature;
+        },
+        theme: {
+          color: "#FF4400",
+        },
+      };
+      var rzp1 = new Razorpay(options);
+      rzp1.on("payment.failed", function (response) {
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+      });
+      document.getElementById("rzp-button1").onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
+      };
+    </script>
+
+    <script>
+      let ticketid = Math.floor(Math.random() * 100000000 + 1);
+      document.getElementById("ticketid").value = ticketid;
+      document.getElementById("sampleticketid").value = ticketid;
+    </script>
+
+    <script>
+      time = new Date();
+      h = time.getHours(); // => 9
+      m = time.getMinutes(); // =>  30
+      s = time.getSeconds(); // => 51
+      document.getElementById("time").value = h + ":" + m + ":" + s;
+      console.log(time);
+    </script>
+
+    <script>
+      document.getElementById("newrate").value =
+        document.getElementById("rate").value * 100;
+    </script>
+
+    <script>
+      var from = document.getElementById("from").value;
+      var to = document.getElementById("to").value;
+
+      while (from >= 0) {
+        if (from == 0) {
+          document.getElementById("newfrom").value =
+            "Chatrapati Shivaji Terminus";
+            document.getElementById("newnewfrom").value =
+            "Chatrapati Shivaji Terminus";
+        }
+
+        if (from == 2) {
+          document.getElementById("newfrom").value = "Masjid Bunder";
+          document.getElementById("newnewfrom").value = "Masjid Bunder";
+        }
+
+        if (from == 3) {
+          document.getElementById("newfrom").value = "Sandhurst Road";
+          document.getElementById("newnewfrom").value = "Sandhurst Road";
+        }
+
+        if (from == 5) {
+          document.getElementById("newfrom").value = "Byculla";
+          document.getElementById("newnewfrom").value = "Byculla";
+        }
+
+        if (from == 6) {
+          document.getElementById("newfrom").value = "Chinchpokli";
+          document.getElementById("newnewfrom").value = "Chinchpokli";
+        }
+
+        if (from == 7) {
+          document.getElementById("newfrom").value = "Curry Road";
+          document.getElementById("newnewfrom").value = "Curry Road";
+        }
+
+        if (from == 8) {
+          document.getElementById("newfrom").value = "Parel";
+          document.getElementById("newnewfrom").value = "Parel";
+        }
+
+        if (from == 9) {
+          document.getElementById("newfrom").value = "Dadar";
+          document.getElementById("newnewfrom").value = "Dadar";
+        }
+
+        if (from == 11) {
+          document.getElementById("newfrom").value = "Matunga";
+          document.getElementById("newnewfrom").value = "Matunga";
+        }
+
+        if (from == 13) {
+          document.getElementById("newfrom").value = "Sion";
+          document.getElementById("newnewfrom").value = "Sion";
+        }
+
+        if (from == 16) {
+          document.getElementById("newfrom").value = "Kurla";
+          document.getElementById("newnewfrom").value = "Kurla";
+        }
+
+        if (from == 18) {
+          document.getElementById("newfrom").value = "Vidyavihar";
+          document.getElementById("newnewfrom").value = "Vidyavihar";
+        }
+
+        if (from == 20) {
+          document.getElementById("newfrom").value = "Ghatkopar";
+          document.getElementById("newnewfrom").value = "Ghatkopar";
+        }
+
+        if (from == 23) {
+          document.getElementById("newfrom").value = "VIkroli";
+          document.getElementById("newnewfrom").value = "VIkroli";
+        }
+
+        if (from == 25) {
+          document.getElementById("newfrom").value = "Kanjurmarg";
+          document.getElementById("newnewfrom").value = "Kanjurmarg";
+        }
+
+        if (from == 26) {
+          document.getElementById("newfrom").value = "Bhandup";
+          document.getElementById("newnewfrom").value = "Bhandup";
+        }
+
+        if (from == 28) {
+          document.getElementById("newfrom").value = "Nahur";
+          document.getElementById("newnewfrom").value = "Nahur";
+        }
+
+        if (from == 31) {
+          document.getElementById("newfrom").value = "Mulund";
+          document.getElementById("newnewfrom").value = "Mulund";
+        }
+
+        if (from == 34) {
+          document.getElementById("newfrom").value = "Thane";
+          document.getElementById("newnewfrom").value = "Thane";
+        }
+
+        if (from == 36) {
+          document.getElementById("newfrom").value = "Kalwa";
+          document.getElementById("newnewfrom").value = "Kalwa";
+        }
+
+        if (from == 40) {
+          document.getElementById("newfrom").value = "Mumbra";
+          document.getElementById("newnewfrom").value = "Mumbra";
+        }
+
+        if (from == 43) {
+          document.getElementById("newfrom").value = "Diwa";
+          document.getElementById("newnewfrom").value = "Diwa";
+        }
+
+        if (from == 47) {
+          document.getElementById("newfrom").value = "Kopar";
+          document.getElementById("newnewfrom").value = "Kopar";
+        }
+
+        if (from == 49) {
+          document.getElementById("newfrom").value = "Dombivli";
+          document.getElementById("newnewfrom").value = "Dombivli";
+        }
+
+        if (from == 50) {
+          document.getElementById("newfrom").value = "Thakurli";
+          document.getElementById("newnewfrom").value = "Thakurli";
+        }
+
+        if (from == 54) {
+          document.getElementById("newfrom").value = "Kalyan";
+          document.getElementById("newnewfrom").value = "Kalyan";
+        }
+
+        if (from == 55) {
+          document.getElementById("newfrom").value = "Vithalwadi";
+          document.getElementById("newnewfrom").value = "Vithalwadi";
+        }
+
+        if (from == 56) {
+          document.getElementById("newfrom").value = "Ulhasnagar";
+          document.getElementById("newnewfrom").value = "Ulhasnagar";
+        }
+
+        if (from == 58) {
+          document.getElementById("newfrom").value = "Ambernath";
+          document.getElementById("newnewfrom").value = "Ambernath";
+        }
+
+        if (from == 60) {
+          document.getElementById("newfrom").value = "Badlapur";
+          document.getElementById("newnewfrom").value = "Badlapur";
+        }
+
+        if (from == 62) {
+          document.getElementById("newfrom").value = "Vangani";
+          document.getElementById("newnewfrom").value = "Vangani";
+        }
+
+        if (from == 64) {
+          document.getElementById("newfrom").value = "Shelu";
+          document.getElementById("newnewfrom").value = "Shelu";
+        }
+
+        if (from == 66) {
+          document.getElementById("newfrom").value = "Neral";
+          document.getElementById("newnewfrom").value = "Neral";
+        }
+
+        if (from == 68) {
+          document.getElementById("newfrom").value = "Bhivvpuri Rd";
+          document.getElementById("newnewfrom").value = "Bhivvpuri Rd";
+        }
+
+        if (from == 70) {
+          document.getElementById("newfrom").value = "Karjat";
+          document.getElementById("newnewfrom").value = "Karjat";
+        }
+
+        if (from == 71) {
+          document.getElementById("newfrom").value = "Kelavalli";
+          document.getElementById("newnewfrom").value = "Kelavalli";
+        }
+
+        if (from == 73) {
+          document.getElementById("newfrom").value = "Dolavalli";
+          document.getElementById("newnewfrom").value = "Dolavalli";
+        }
+
+        if (from == 74) {
+          document.getElementById("newfrom").value = "Lowjee";
+          document.getElementById("newnewfrom").value = "Lowjee";
+        }
+
+        if (from == 75) {
+          document.getElementById("newfrom").value = "Khopoli";
+          document.getElementById("newnewfrom").value = "Khopoli";
+        }
+
+        if (from == 57) {
+          document.getElementById("newfrom").value = "Shahad";
+          document.getElementById("newnewfrom").value = "Shahad";
+        }
+
+        if (from == 59) {
+          document.getElementById("newfrom").value = "Ambivalli";
+          document.getElementById("newnewfrom").value = "Ambivalli";
+        }
+
+        if (from == 72) {
+          document.getElementById("newfrom").value = "Titwala";
+          document.getElementById("newnewfrom").value = "Titwala";
+        }
+
+        if (from == 76) {
+          document.getElementById("newfrom").value = "Khadavli";
+          document.getElementById("newnewfrom").value = "Khadavli";
+        }
+
+        if (from == 77) {
+          document.getElementById("newfrom").value = "Vashind";
+          document.getElementById("newnewfrom").value = "Vashind";
+        }
+
+        if (from == 78) {
+          document.getElementById("newfrom").value = "Asangaon";
+          document.getElementById("newnewfrom").value = "Asangaon";
+        }
+
+        if (from == 79) {
+          document.getElementById("newfrom").value = "Atgoan";
+          document.getElementById("newnewfrom").value = "Atgoan";
+        }
+
+        if (from == 81) {
+          document.getElementById("newfrom").value = "Kardi";
+          document.getElementById("newnewfrom").value = "Kardi";
+        }
+
+        if (from == 83) {
+          document.getElementById("newfrom").value = "Kasara";
+          document.getElementById("newnewfrom").value = "Kasara";
+        }
+        break;
+      }
+
+      while (to >= 0) {
+        if (to == 0) {
+          document.getElementById("newto").value =
+            "Chatrapati Shivaji Terminus";
+            document.getElementById("newnewto").value =
+            "Chatrapati Shivaji Terminus";
+        }
+
+        if (to == 2) {
+          document.getElementById("newto").value = "Masjid Bunder";
+          document.getElementById("newnewto").value = "Masjid Bunder";
+        }
+
+        if (to == 3) {
+          document.getElementById("newto").value = "Sandhurst Road";
+          document.getElementById("newnewto").value = "Sandhurst Road";
+        }
+
+        if (to == 5) {
+          document.getElementById("newto").value = "Byculla";
+          document.getElementById("newnewto").value = "Byculla";
+        }
+
+        if (to == 6) {
+          document.getElementById("newto").value = "Chinchpokli";
+          document.getElementById("newnewto").value = "Chinchpokli";
+        }
+
+        if (to == 7) {
+          document.getElementById("newto").value = "Curry Road";
+          document.getElementById("newnewto").value = "Curry Road";
+        }
+
+        if (from == 8) {
+          document.getElementById("newto").value = "Parel";
+          document.getElementById("newnewto").value = "Parel";
+        }
+
+        if (to == 9) {
+          document.getElementById("newto").value = "Dadar";
+          document.getElementById("newnewto").value = "Dadar";
+        }
+
+        if (to == 11) {
+          document.getElementById("newto").value = "Matunga";
+          document.getElementById("newnewto").value = "Matunga";
+        }
+
+        if (to == 13) {
+          document.getElementById("newto").value = "Sion";
+          document.getElementById("newnewto").value = "Sion";
+        }
+
+        if (to == 16) {
+          document.getElementById("newto").value = "Kurla";
+          document.getElementById("newnewto").value = "Kurla";
+        }
+
+        if (to == 18) {
+          document.getElementById("newto").value = "Vidyavihar";
+          document.getElementById("newnewto").value = "Vidyavihar";
+        }
+
+        if (to == 20) {
+          document.getElementById("newto").value = "Ghatkopar";
+          document.getElementById("newnewto").value = "Ghatkopar";
+        }
+
+        if (to == 23) {
+          document.getElementById("newto").value = "VIkroli";
+          document.getElementById("newnewto").value = "VIkroli";
+        }
+
+        if (to == 25) {
+          document.getElementById("newto").value = "Kanjurmarg";
+          document.getElementById("newnewto").value = "Kanjurmarg";
+        }
+
+        if (to == 26) {
+          document.getElementById("newto").value = "Bhandup";
+          document.getElementById("newnewto").value = "Bhandup";
+        }
+
+        if (to == 28) {
+          document.getElementById("newto").value = "Nahur";
+          document.getElementById("newnewto").value = "Nahur";
+        }
+
+        if (to == 31) {
+          document.getElementById("newto").value = "Mulund";
+          document.getElementById("newnewto").value = "Mulund";
+        }
+
+        if (to == 34) {
+          document.getElementById("newto").value = "Thane";
+          document.getElementById("newnewto").value = "Thane";
+        }
+
+        if (to == 36) {
+          document.getElementById("newto").value = "Kalwa";
+          document.getElementById("newnewto").value = "Kalwa";
+        }
+
+        if (to == 40) {
+          document.getElementById("newto").value = "Mumbra";
+          document.getElementById("newnewto").value = "Mumbra";
+        }
+
+        if (to == 43) {
+          document.getElementById("newto").value = "Diwa";
+          document.getElementById("newnewto").value = "Diwa";
+        }
+
+        if (to == 47) {
+          document.getElementById("newto").value = "Kopar";
+          document.getElementById("newnewto").value = "Kopar";
+        }
+
+        if (to == 49) {
+          document.getElementById("newto").value = "Dombivli";
+          document.getElementById("newnewto").value = "Dombivli";
+        }
+
+        if (to == 50) {
+          document.getElementById("newto").value = "Thakurli";
+          document.getElementById("newnewto").value = "Thakurli";
+        }
+
+        if (to == 54) {
+          document.getElementById("newto").value = "Kalyan";
+          document.getElementById("newnewto").value = "Kalyan";
+        }
+
+        if (to == 55) {
+          document.getElementById("newto").value = "Vithalwadi";
+          document.getElementById("newnewto").value = "Vithalwadi";
+        }
+
+        if (to == 56) {
+          document.getElementById("newto").value = "Ulhasnagar";
+          document.getElementById("newnewto").value = "Ulhasnagar";
+        }
+
+        if (to == 58) {
+          document.getElementById("newto").value = "Ambernath";
+          document.getElementById("newnewto").value = "Ambernath";
+        }
+
+        if (to == 60) {
+          document.getElementById("newto").value = "Badlapur";
+          document.getElementById("newnewto").value = "Badlapur";
+        }
+
+        if (to == 62) {
+          document.getElementById("newto").value = "Vangani";
+          document.getElementById("newnewto").value = "Vangani";
+        }
+
+        if (to == 64) {
+          document.getElementById("newto").value = "Shelu";
+          document.getElementById("newnewto").value = "Shelu";
+        }
+
+        if (to == 66) {
+          document.getElementById("newto").value = "Neral";
+          document.getElementById("newnewto").value = "Neral";
+        }
+
+        if (to == 68) {
+          document.getElementById("newto").value = "Bhivvpuri Rd";
+          document.getElementById("newnewto").value = "Bhivvpuri Rd";
+        }
+
+        if (to == 70) {
+          document.getElementById("newto").value = "Karjat";
+          document.getElementById("newnewto").value = "Karjat";
+        }
+
+        if (to == 71) {
+          document.getElementById("newto").value = "Kelavalli";
+          document.getElementById("newnewto").value = "Kelavalli";
+        }
+
+        if (to == 73) {
+          document.getElementById("newto").value = "Dolavalli";
+          document.getElementById("newnewto").value = "Dolavalli";
+        }
+
+        if (to == 74) {
+          document.getElementById("newto").value = "Lowjee";
+          document.getElementById("newnewto").value = "Lowjee";
+        }
+
+        if (to == 75) {
+          document.getElementById("newto").value = "Khopoli";
+          document.getElementById("newnewto").value = "Khopoli";
+        }
+
+        if (to == 57) {
+          document.getElementById("newto").value = "Shahad";
+          document.getElementById("newnewto").value = "Shahad";
+        }
+
+        if (to == 59) {
+          document.getElementById("newto").value = "Ambivalli";
+          document.getElementById("newnewto").value = "Ambivalli";
+        }
+
+        if (to == 72) {
+          document.getElementById("newto").value = "Titwala";
+          document.getElementById("newnewto").value = "Titwala";
+        }
+
+        if (to == 76) {
+          document.getElementById("newto").value = "Khadavli";
+          document.getElementById("newnewto").value = "Khadavli";
+        }
+
+        if (to == 77) {
+          document.getElementById("newto").value = "Vashind";
+          document.getElementById("newnewto").value = "Vashind";
+        }
+
+        if (to == 78) {
+          document.getElementById("newto").value = "Asangaon";
+          document.getElementById("newnewto").value = "Asangaon";
+        }
+
+        if (to == 79) {
+          document.getElementById("newto").value = "Atgoan";
+          document.getElementById("newnewto").value = "Atgoan";
+        }
+
+        if (to == 81) {
+          document.getElementById("newto").value = "Kardi";
+          document.getElementById("newnewto").value = "Kardi";
+        }
+
+        if (to == 83) {
+          document.getElementById("newto").value = "Kasara";
+          document.getElementById("newnewto").value = "Kasara";
+        }
+        break;
+      }
+    </script>
+    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    <script type="text/javascript"> 
+        function googleTranslateElementInit() { 
+            new google.translate.TranslateElement(
+                {pageLanguage: 'en'}, 
+                'google_translate_element'
+            ); 
+        } 
+    </script>
+  </body>
+</html>

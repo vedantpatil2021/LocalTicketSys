@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html
+  xmlns:v="urn:schemas-microsoft-com:vml"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  lang="en"
+>
+  <head>
+    <title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--[if mso
+      ]><xml
+        ><o:OfficeDocumentSettings
+          ><o:PixelsPerInch>96</o:PixelsPerInch
+          ><o:AllowPNG /></o:OfficeDocumentSettings></xml
+    ><![endif]-->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+      }
+
+      a[x-apple-data-detectors] {
+        color: inherit !important;
+        text-decoration: inherit !important;
+      }
+
+      #MessageViewBody a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      p {
+        line-height: inherit;
+      }
+
+      @media (max-width: 715px) {
+        .icons-inner {
+          text-align: center;
+        }
+
+        .icons-inner td {
+          margin: 0 auto;
+        }
+
+        .row-content {
+          width: 100% !important;
+        }
+
+        .image_block img.big {
+          width: auto !important;
+        }
+
+        .column .border {
+          display: none;
+        }
+
+        table {
+          table-layout: fixed !important;
+        }
+
+        .stack .column {
+          width: 100%;
+          display: block;
+        }
+      }
+    </style>
+  </head>
+
+  <body
+    style="
+      background-color: #ffffff;
+      margin: 0;
+      padding: 0;
+      -webkit-text-size-adjust: none;
+      text-size-adjust: none;
+    "
+  >
+    <table
+      class="nl-container"
+      width="100%"
+      border="0"
+      cellpadding="0"
+      cellspacing="0"
+      role="presentation"
+      style="
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+        background-color: #ffffff;
+      "
+    >
+      <tbody>
+        <tr>
+          <td>
+            <table
+              class="row row-1"
+              align="center"
+              width="100%"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              role="presentation"
+              style="mso-table-lspace: 0pt; mso-table-rspace: 0pt"
+            >
+              <tbody>
+                <tr>
+                  <td>
+                    <table
+                      class="row-content stack"
+                      align="left"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      role="presentation"
+                      style="
+                        mso-table-lspace: 0pt;
+                        mso-table-rspace: 0pt;
+                        color: #000000;
+                        width: 695px;
+                      "
+                      width="695"
+                    >
+                      <tbody>
+                        <tr>
+                          <td
+                            class="column column-1"
+                            width="100%"
+                            style="
+                              mso-table-lspace: 0pt;
+                              mso-table-rspace: 0pt;
+                              font-weight: 400;
+                              text-align: left;
+                              vertical-align: top;
+                              padding-top: 5px;
+                              padding-bottom: 5px;
+                              border-top: 0px;
+                              border-right: 0px;
+                              border-bottom: 0px;
+                              border-left: 0px;
+                            "
+                          >
+                            <table
+                              class="image_block"
+                              width="100%"
+                              border="0"
+                              cellpadding="0"
+                              cellspacing="0"
+                              role="presentation"
+                              style="
+                                mso-table-lspace: 0pt;
+                                mso-table-rspace: 0pt;
+                              "
+                            >
+                              <tr>
+                                <td
+                                  style="
+                                    width: 100%;
+                                    padding-right: 0px;
+                                    padding-left: 0px;
+                                  "
+                                >
+                                  <!-- Main Content -->
+                                  <h1
+                                    style="
+                                      position: absolute;
+                                      left: 30%;
+                                      top: 2%;
+                                      font-size: 2rem;
+                                    "
+                                  >
+                                    {{ticketdata.ticketid}}
+                                  </h1>
+                                  <div
+                                    style="
+                                      position: absolute;
+                                      top: 10%;
+                                      color: #2e3192;
+                                      left: 5%;
+                                      width: 550px;
+                                      height: 350px;
+                                      display: flex;
+                                      flex-direction: column;
+                                    "
+                                  >
+                                    <div
+                                      class="category"
+                                      style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                      "
+                                    >
+                                      <h1>{{ticketdata.checkbox}}</h1>
+                                      <h1>{{ticketdata.date}}</h1>
+                                    </div>
+                                    <div
+                                      class="category"
+                                      style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                      "
+                                    >
+                                      <div class="station">
+                                        <h1
+                                          style="
+                                            font-style: italic;
+                                            text-transform: uppercase;
+                                            font-size: 20px;
+                                          "
+                                        >
+                                          {{ticketdata.fromstation}} TO {{ticketdata.tostation}}
+                                        </h1>
+                                      </div>
+                                      <div class="class">
+                                        <h1>II ORD</h1>
+                                      </div>
+                                    </div>
+                                    <div
+                                      class="adult"
+                                      style="
+                                        display: flex;
+                                        justify-content: space-between;
+                                      "
+                                    >
+                                      <h1>AD:{{ticketdata.adult}} CH:0</h1>
+                                      <h1>Rs: {{ticketdata.rate}}</h1>
+                                    </div>
+                                    <p style="font-size: 30px">{{ticketdata.time}}</p>
+                                    <div class="usermessage">
+                                      <h4 style="font-size: 24px">
+                                        {{ticketdata.usermessage}}
+                                      </h4>
+                                    </div>
+                                  </div>
+                                  <!-- Main Content End -->
+                                  <div align="center" style="line-height: 10px">
+                                    <img
+                                      class="big"
+                                      src="https://d15k2d11r6t6rl.cloudfront.net/public/users/Integrators/BeeProAgency/780369_764104/Happy%20journey.png"
+                                      style="
+                                        display: block;
+                                        height: auto;
+                                        border: 0;
+                                        width: 695px;
+                                        max-width: 100%;
+                                      "
+                                      width="695"
+                                    />
+                                  </div>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+            <table
+              class="row row-2"
+              align="center"
+              width="100%"
+              border="0"
+              cellpadding="0"
+              cellspacing="0"
+              role="presentation"
+              style="mso-table-lspace: 0pt; mso-table-rspace: 0pt"
+            >
+              <tbody>
+                <tr>
+                  <td>
+                    <table
+                      class="row-content stack"
+                      align="left"
+                      border="0"
+                      cellpadding="0"
+                      cellspacing="0"
+                      role="presentation"
+                      style="
+                        mso-table-lspace: 0pt;
+                        mso-table-rspace: 0pt;
+                        color: #000000;
+                        width: 695px;
+                      "
+                      width="695"
+                    >
+                      <tbody>
+                        <tr>
+                          <td
+                            class="column column-1"
+                            width="100%"
+                            style="
+                              mso-table-lspace: 0pt;
+                              mso-table-rspace: 0pt;
+                              font-weight: 400;
+                              text-align: left;
+                              vertical-align: top;
+                              padding-top: 5px;
+                              padding-bottom: 5px;
+                              border-top: 0px;
+                              border-right: 0px;
+                              border-bottom: 0px;
+                              border-left: 0px;
+                            "
+                          >
+                            <table
+                              class="icons_block"
+                              width="100%"
+                              border="0"
+                              cellpadding="0"
+                              cellspacing="0"
+                              role="presentation"
+                              style="
+                                mso-table-lspace: 0pt;
+                                mso-table-rspace: 0pt;
+                              "
+                            >
+                              <!-- <tr>
+                                <button id="generatePDF">
+                                  Download Ticket
+                                </button>
+                              </tr> -->
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- End -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+    <script>
+      var doc = new jsPDF();
+      var specialElementHandlers = {
+        "#editor": function (element, renderer) {
+          return true;
+        },
+      };
+
+      //margins.left, // x coord   margins.top, { // y coord
+      $("#generatePDF").click(function () {
+        doc.fromHTML($("#htmlContent").html(), 15, 15, {
+          width: 700,
+          elementHandlers: specialElementHandlers,
+        });
+        doc.save("E-Ticket.pdf");
+      });
+    </script>
+  </body>
+</html>

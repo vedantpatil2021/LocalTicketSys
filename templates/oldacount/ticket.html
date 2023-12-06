@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket</title>
+  </head>
+  <body>
+    <form method="post">
+      {%csrf_token%}
+      <div class="hidden_format" >
+        <label for="email">Email: </label>
+        <input
+          type="email"
+          name="email"
+          value="{{user.email}}"
+          readonly
+        /><br />
+        <label for="fname">first_name</label>
+        <input
+          type="test"
+          name="first_name"
+          value="{{user.first_name}}"
+          readonly
+        /><br />
+        <label for="lname">last_name</label>
+        <input
+          type="text"
+          name="last_name"
+          value="{{user.last_name}}"
+          readonly
+        /><br />
+        <label for="username">username</label>
+        <input
+          type="text"
+          name="username"
+          value="{{user.username}}"
+          readonly
+        /><br />
+      </div>
+      <br>
+      <!-- <input type="text" name="ticketid" id="ticketid" value=" " readonly> -->
+      <br>
+      <input type="radio" name="checkbox" value="Single" id="single" />
+      <label for="single">Single</label>
+      <input type="radio" name="checkbox" value="Return" id="retun" />
+      <label for="return">Return</label>
+      <br />
+      <br />
+      <label for="">Person</label>
+      <select name="adult" id="adult">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+      </select>
+      <br />
+      <br>
+      <label for="for ">For : </label>
+      <select id="from" name="from">
+        <option value="0" id="chatrapati">Chatrapati Shivaji Terminus</option>
+        <option value="2" id="masjid">Masjid Bunder</option>
+        <option value="3" id="sandhurst">Sandhurst Road</option>
+        <option value="5" id="byculla">Byculla</option>
+        <option value="6" id="chinchpokli">Chinchpokli</option>
+        <option value="7" id="currey">Currey Road</option>
+        <option value="8" id="parel">Parel</option>
+        <option value="9" id="dadar">Dadar</option>
+        <option value="11" id="matunga">Matunga</option>
+        <option value="13" id="sion">Sion</option>
+        <option value="16" id="kurla">Kurla</option>
+        <option value="18" id="vidyavihar">Vidyavihar</option>
+        <option value="20" id="ghatkopar">Ghatkopar</option>
+        <option value="23" id="vikhroli">Vikhroli</option>
+        <option value="25" id="kanjurmarg">Kanjurmarg</option>
+        <option value="26" id="bhandup">Bhandup</option>
+        <option value="28" id="nahur">Nahur</option>
+        <option value="31" id="mulund">Mulund</option>
+        <option value="34" id="thane">Thane</option>
+        <option value="36" id="kalwa">Kalwa</option>
+        <option value="40" id="mumbra">Mumbra</option>
+        <option value="43" id="diwa">Diwa</option>
+        <option value="47" id="kopar">Kopar</option>
+        <option value="49" id="dombivli">Dombivli</option>
+        <option value="50" id="thakurli">Thakurli</option>
+        <option value="54" id="kalyan">Kalyan</option>
+        <option value="55" id="vithalwadi">Vithalwadi</option>
+        <option value="56" id="ulhasnagar">Ulhasnagar</option>
+        <option value="58" id="Ambernath">Ambernath</option>
+        <option value="60" id="badlapur">Badlapur</option>
+        <option value="62" id="Vangani">Vangani</option>
+        <option value="66" id="neral">Neral</option>
+        <option value="68" id="bhivpuri">Bhivpuri Rd</option>
+        <option value="70" id="karjat">Karjat</option>
+        <option value="71" id="kelavalli">Kelavalli/option></option>
+        <option value="73" id="dolavalli">Dolavalli</option>
+        <option value="74" id="lowjee">Lowjee</option>
+        <option value="75" id="khopoli">Khopoli</option>
+        <option value="57" id="sahad">Sahad</option>
+        <option value="59" id="ambivalli">Ambivalli</option>
+        <option value="72" id="titwala">Titwala</option>
+        <option value="76" id="khandavli">Khandavli</option>
+        <option value="77" id="vasind">Vasind</option>
+        <option value="78" id="asangoan">Asangoan</option>
+        <option value="79" id="atgoan">Atgoan</option>
+        <option value="81" id="kardi">Kardi</option>
+        <option value="83" id="kasara">Kasara</option>
+      </select>
+      <br />
+      <br />
+
+      <label for="to ">To : </label>
+      <select id="to" name="to">
+        <option value="0" id="chatrapati">Chatrapati Shivaji Terminus</option>
+        <option value="2" id="masjid">Masjid Bunder</option>
+        <option value="3" id="sandhurst">Sandhurst Road</option>
+        <option value="5" id="byculla">Byculla</option>
+        <option value="6" id="chinchpokli">Chinchpokli</option>
+        <option value="7" id="currey">Currey Road</option>
+        <option value="8" id="parel">Parel</option>
+        <option value="9" id="dadar">Dadar</option>
+        <option value="11" id="matunga">Matunga</option>
+        <option value="13" id="sion">Sion</option>
+        <option value="16" id="kurla">Kurla</option>
+        <option value="18" id="vidyavihar">Vidyavihar</option>
+        <option value="20" id="ghatkopar">Ghatkopar</option>
+        <option value="23" id="vikhroli">Vikhroli</option>
+        <option value="25" id="kanjurmarg">Kanjurmarg</option>
+        <option value="26" id="bhandup">Bhandup</option>
+        <option value="28" id="nahur">Nahur</option>
+        <option value="31" id="mulund">Mulund</option>
+        <option value="34" id="thane">Thane</option>
+        <option value="36" id="kalwa">Kalwa</option>
+        <option value="40" id="mumbra">Mumbra</option>
+        <option value="43" id="diwa">Diwa</option>
+        <option value="47" id="kopar">Kopar</option>
+        <option value="49" id="dombivli">Dombivli</option>
+        <option value="50" id="thakurli">Thakurli</option>
+        <option value="54" id="kalyan">Kalyan</option>
+        <option value="55" id="vithalwadi">Vithalwadi</option>
+        <option value="56" id="ulhasnagar">Ulhasnagar</option>
+        <option value="58" id="Ambernath">Ambernath</option>
+        <option value="60" id="badlapur">Badlapur</option>
+        <option value="62" id="Vangani">Vangani</option>
+        <option value="66" id="neral">Neral</option>
+        <option value="68" id="bhivpuri">Bhivpuri Rd</option>
+        <option value="70" id="karjat">Karjat</option>
+        <option value="71" id="kelavalli">Kelavalli/option></option>
+        <option value="73" id="dolavalli">Dolavalli</option>
+        <option value="74" id="lowjee">Lowjee</option>
+        <option value="75" id="khopoli">Khopoli</option>
+        <option value="57" id="sahad">Sahad</option>
+        <option value="59" id="ambivalli">Ambivalli</option>
+        <option value="72" id="titwala">Titwala</option>
+        <option value="76" id="khandavli">Khandavli</option>
+        <option value="77" id="vasind">Vasind</option>
+        <option value="78" id="asangoan">Asangoan</option>
+        <option value="79" id="atgoan">Atgoan</option>
+        <option value="81" id="kardi">Kardi</option>
+        <option value="83" id="kasara">Kasara</option>
+      </select>
+      <br />
+      <br />
+
+      <label for="rate">Rate:</label>
+      <input
+        type="text"
+        id="result"
+        name="rate"
+        placeholder="Rate"
+        readonly
+        required
+      />
+      <br />
+      <br />
+      <label for="date">Date: </label>
+      <input type="text" name="date" id="date" value=" ">
+      <br>
+      <br>
+      <label for="usermessage">Ticket Message: </label>
+      <input type="text" name="usermessage" id="usermessage" style="width: 100%;" value=" ">
+      <br>
+      <br>
+      <button type="button" onclick="fare();">confirm</button>
+
+      <button type="submit">Submit</button>
+    </form>
+
+    <script>
+      n =  new Date();
+      y = n.getFullYear();
+      m = n.getMonth()+1;
+      d = n.getDate();
+      document.getElementById("date").value = d + "/" + m + "/" + y;
+      
+      let ticketid = Math.floor((Math.random() * 100000000) + 1);
+      document.getElementById("ticketid").value = ticketid;
+    </script>
+
+    <script>
+      function fare() {
+        n =  new Date();
+        y = n.getFullYear();
+        m = n.getMonth() + 1;
+        d = n.getDate()+1;
+
+        var from = document.getElementById("from").value;
+        var to = document.getElementById("to").value;
+        var result = document.getElementById("result").value;
+        var single = document.getElementById("single").value;
+        var retun = document.getElementById("retun").value;
+        var adult = document.getElementById("adult").value;
+
+        if (document.getElementById("single").checked == true) {
+          if (from - to == 0) {
+            alert("Same Stations Not Allowed");
+          }
+          if (from - to >= 1 && from - to <= 8) {
+            document.getElementById("result").value = adult * "5";
+          }
+
+          if (from - to >= 9 && from - to <= 29) {
+            document.getElementById("result").value = adult * "10";
+          }
+
+          if (from - to >= 30 && from - to <= 42) {
+            document.getElementById("result").value = adult * "15";
+          }
+          if (from - to >= 43 && from - to <= 55) {
+            document.getElementById("result").value = adult * "20";
+          }
+
+          if (from - to <= -1 && from - to >= -8) {
+            document.getElementById("result").value = adult * "5";
+          }
+
+          if (from - to <= -9 && from - to >= -29) {
+            document.getElementById("result").value = adult * "10";
+          }
+
+          if (from - to <= -30 && from - to >= -42) {
+            document.getElementById("result").value = adult * "15";
+          }
+          if (from - to <= -43 && from - to >= -55) {
+            document.getElementById("result").value = adult * "20";
+          }
+
+          document.getElementById("usermessage").value = "Journey should commence within one hour";
+        }
+
+        if (document.getElementById("retun").checked == true) {
+          if (from - to == 0) {
+            alert("Same Stations Not Allowed");
+          }
+
+          if (from - to >= 1 && from - to <= 8) {
+            document.getElementById("result").value = adult * "10";
+          }
+
+          if (from - to >= 9 && from - to <= 29) {
+            document.getElementById("result").value = adult * "20";
+          }
+
+          if (from - to >= 30 && from - to <= 42) {
+            document.getElementById("result").value = adult * "30";
+          }
+          if (from - to >= 43 && from - to <= 55) {
+            document.getElementById("result").value = adult * "40";
+          }
+
+          if (from - to <= -1 && from - to >= -8) {
+            document.getElementById("result").value = adult * "10";
+          }
+
+          if (from - to <= -9 && from - to >= -29) {
+            document.getElementById("result").value = adult * "20";
+          }
+
+          if (from - to <= -30 && from - to >= -42) {
+            document.getElementById("result").value = adult * "30";
+          }
+          if (from - to <= -43 && from - to >= -55) {
+            document.getElementById("result").value = adult * "40";
+          }
+
+          document.getElementById("usermessage").value = "Valid for one return journey till midnight of"+" "+  d + "/" + m + "/" + y;
+        }
+      }
+    </script>
+  </body>
+</html>
